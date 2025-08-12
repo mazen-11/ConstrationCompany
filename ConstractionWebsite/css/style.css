@@ -1,0 +1,27 @@
+.hero-section {
+            background-image: url('https://images.unsplash.com/photo-1599427303058-f04cbcf4756f'); /* Example image */
+            background-size: cover;
+            background-position: center;
+            min-height: 70vh;
+            padding-top: 100px; /* space below navbar */
+        }
+        .hero-section .info-box {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .hero-section h1,
+        .hero-section p {
+            color: white;
+        }
+
+        .page-container {
+            min-height: calc(100vh - 60px);
+            padding-top: 60px;
+            padding-bottom: 60px;
+        }
+        .toggle-btn {
+            border-radius: 25px;
+            font-weight: bold;
+            padding: 10px 20px;
+        }

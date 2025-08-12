@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="css/Style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="bi bi-speedometer2"></i> Dashboard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- User Menu -->
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle"></i> John Doe
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- Navigation Menu for Small Screens -->
+                <ul class="navbar-nav me-auto d-lg-none">
+                    <li class="nav-item">
+                        <button class="mobile-nav-btn" data-page="CurrentProjects" onclick="switchForm('DiscoverProjects.html')">
+                            <i class="bi bi-house-door me-2"></i> Current Projects
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="mobile-nav-btn" data-page="analytics" onclick="switchForm('analytics')">
+                            <i class="bi bi-graph-up me-2"></i> Analytics
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="mobile-nav-btn" data-page="users" onclick="switchForm('users')">
+                            <i class="bi bi-people me-2"></i> Users
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="mobile-nav-btn" data-page="products" onclick="switchForm('products')">
+                            <i class="bi bi-box me-2"></i> Products
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="mobile-nav-btn" data-page="orders" onclick="switchForm('orders')">
+                            <i class="bi bi-cart me-2"></i> Orders
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="mobile-nav-btn" data-page="settings" onclick="switchForm('settings')">
+                            <i class="bi bi-gear me-2"></i> Settings
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Main Content -->
+            <div class="col-lg-10" id="main-content">
+                <!-- Default Welcome Message -->
+                <div class="p-4" id="welcome-content">
+                    <div class="text-center">
+                        <i class="bi bi-speedometer2 display-1 text-primary mb-3"></i>
+                        <h2>Welcome to Dashboard</h2>
+                        <p class="text-muted">Select an option from the sidebar to get started</p>
+                    </div>
+                </div>
+                
+                <!-- Loading Indicator -->
+                <div class="loading text-center p-4" id="loading-indicator" style="display: none;">
+                    <div class="spinner-border text-primary mb-3" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p>Loading page...</p>
+                </div>
+                
+                <!-- Content Container (hidden by default, for demo content) -->
+                <div id="dynamic-content" style="display: none; padding: 2rem;"></div>
+                
+                <!-- Iframe Container (for external files) -->
+                <iframe id="formIframe" class="main-content-iframe" src="" style="display: none;"></iframe>
+            </div>
+
+            <!-- Sidebar - Hidden on small screens -->
+            <div class="col-lg-2 bg-light sidebar p-0 d-none d-lg-block position-fixed" style="right: 0;">
+                <div class="d-flex flex-column p-3">
+                    <div class="d-flex flex-column">
+                        <button class="sidebar-btn active" data-page="CurrentProjects" onclick="switchForm('DiscoverProjects.html')">
+                            <i class="bi bi-house-door me-2"></i> Current Projects
+                        </button>
+                        <button class="sidebar-btn" data-page="analytics" onclick="switchForm('analytics.html')">
+                            <i class="bi bi-graph-up me-2"></i> Analytics
+                        </button>
+                        <button class="sidebar-btn" data-page="users" onclick="switchForm('users.html')">
+                            <i class="bi bi-people me-2"></i> Users
+                        </button>
+                        <button class="sidebar-btn" data-page="products" onclick="switchForm('products.html')">
+                            <i class="bi bi-box me-2"></i> Products
+                        </button>
+                        <button class="sidebar-btn" data-page="orders" onclick="switchForm('orders.html')">
+                            <i class="bi bi-cart me-2"></i> Orders
+                        </button>
+                        <button class="sidebar-btn" data-page="settings" onclick="switchForm('settings.html')">
+                            <i class="bi bi-gear me-2"></i> Settings
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="js/Dashboard.js"></script>
+</body>
+</html>
