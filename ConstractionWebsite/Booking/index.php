@@ -15,7 +15,7 @@ if (isset($_POST['BTN'])) {
         "PropertyType" => $_POST['PropertyType'],
         "Details" => $_POST['Details'],
         "Budget" => $_POST['Budget'],
-        "Date" => date("Y-m-d H:i:s") 
+        "Date" => date("Y-m-d") 
     ];
 
     if (BookService($UserInputArray)) {
