@@ -71,14 +71,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         // Responsive classes for different screen sizes
                         card.className = `col-12 col-sm-6 col-md-4 col-lg-3`; 
                         
+                        // Create the project URL with parameters
+                      const projectUrl = `../DiscoverProjects/DiscoverProjectsInfo.php?UserID=${encodeURIComponent(Projects.UserID || '')}&ServiceID=${encodeURIComponent(Projects.ServiceID || '')}&Location=${encodeURIComponent(Projects.City || Projects.Location || '')}`;
+                        
                         card.innerHTML = `
                             <div class="card mt-3 h-100">
                                 <div class="card-body text-end d-flex flex-column">
-                                    <!-- Hidden project ID for forwarding -->
-                                    <div class="project-id" style="display: none;">${Projects.UserID || ''}</div>
-                                    <div class="service-id" style="display: none;">${Projects.ServiceID || ''}</div>
-                                    <div class="project-location" style="display: none;">${Projects.City || Projects.Location || ''}</div>
-                                    
                                     <h5 class="card-title">${Projects.NameOfService || 'Service Name'}</h5>
                                     <div class="card-details flex-grow-1">
                                         <p class="card-text mb-2">
@@ -95,12 +93,11 @@ document.addEventListener('DOMContentLoaded', () => {
                                         </p>
                                     </div>
                                     <div class="card-actions mt-auto">
-                                        <button class="btn btn-primary w-100 btn-responsive project-view-btn mb-2">
+                                        <a href="${projectUrl}" 
+                                           class="btn btn-primary w-100 btn-responsive"
+                                           onclick="trackProjectView('${Projects.UserID}', '${Projects.ServiceID}')">
                                             View Project Details
-                                        </button>
-                                        <button class="btn btn-secondary w-100 btn-responsive project-edit-btn">
-                                            Edit Project
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -109,9 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         projectsList.appendChild(card);
                         console.log('card appended');
                     });
-                    
-                    // Add event listeners to all buttons after cards are created
-                    addProjectButtonListeners();
                     
                     console.log(`Successfully loaded ${data.length} projects`);
                 } else {
@@ -151,90 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         });
 });
-
-// Function to add event listeners to project buttons
-function addProjectButtonListeners() {
-    // Add listeners for view buttons
-    const viewButtons = document.querySelectorAll('.project-view-btn');
-    viewButtons.forEach(button => {
-        button.addEventListener('click', handleProjectViewClick);
-    });
-    
-    // Add listeners for edit buttons
-    const editButtons = document.querySelectorAll('.project-edit-btn');
-    editButtons.forEach(button => {
-        button.addEventListener('click', handleProjectEditClick);
-    });
-}
-
-// Modified version of your handleButtonClick function for projects
-function handleProjectViewClick(e) {
-    e.preventDefault();
-    const card = this.closest('.card');
-    
-    if (card) {
-        const projectIdElement = card.querySelector('.project-id');
-        const serviceIdElement = card.querySelector('.service-id');
-        const locationElement = card.querySelector('.project-location');
-        
-        if (projectIdElement && serviceIdElement) {
-            const projectId = projectIdElement.textContent.trim();
-            const serviceId = serviceIdElement.textContent.trim();
-            const location = locationElement ? locationElement.textContent.trim() : '';
-            
-            console.log('View button clicked for project:', { projectId, serviceId, location });
-            
-            // Track the project view
-            trackProjectView(projectId, serviceId);
-            
-            // Forward to project details page with parameters
-            const params = new URLSearchParams({
-                UserID: projectId,
-                ServiceID: serviceId,
-                Location: location
-            });
-            
-            window.location.href = `PHPQuery/CurrentProjectsApi.php?${params.toString()}`;
-            //
-            return { projectId, serviceId, location };
-        } else {
-            console.error('Project ID or Service ID element not found in card');
-        }
-    } else {
-        console.error('Could not find parent card element');
-    }
-}
-
-// Modified version of your handleButtonClickEdit function for projects
-function handleProjectEditClick(e) {
-    e.preventDefault();
-    const card = this.closest('.card');
-    
-    if (card) {
-        const projectIdElement = card.querySelector('.project-id');
-        const serviceIdElement = card.querySelector('.service-id');
-        
-        if (projectIdElement && serviceIdElement) {
-            const projectId = projectIdElement.textContent.trim();
-            const serviceId = serviceIdElement.textContent.trim();
-            
-            console.log('Edit button clicked for project:', { projectId, serviceId });
-            
-            // Forward to edit page with project parameters
-            const params = new URLSearchParams({
-                id: projectId,
-                serviceId: serviceId
-            });
-            
-            window.location.href = `edit.php?${params.toString()}`;
-            return { projectId, serviceId };
-        } else {
-            console.error('Project ID or Service ID element not found in card');
-        }
-    } else {
-        console.error('Could not find parent card element');
-    }
-}
 
 // Helper function to format date
 function formatDate(dateString) {
