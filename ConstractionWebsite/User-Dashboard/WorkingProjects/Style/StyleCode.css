@@ -1,0 +1,212 @@
+body {
+            background-color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .project-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .left-column {
+            width: 30%;
+            float: right;
+        }
+        .right-column {
+            width: 68%;
+            float: left;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+        }
+        .price-card {
+            text-align: center;
+            background: white;
+            color: #333;
+        }
+        .price-amount {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #007bff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .riyal-icon {
+            width: 40px;
+            height: 40px;
+        }
+        .bidding-form {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .form-label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        .form-control {
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 1rem;
+        }
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+        .btn-primary-custom {
+            background: #007bff;
+            border: 1px solid #007bff;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        .btn-primary-custom:hover {
+            background: #0056b3;
+            border-color: #0056b3;
+        }
+        .btn-secondary-custom {
+            background: white;
+            border: 1px solid #6c757d;
+            color: #6c757d;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 500;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        .btn-secondary-custom:hover {
+            background: #6c757d;
+            color: white;
+        }
+        .info-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            padding: 0.5rem 0;
+        }
+        .info-icon {
+            width: 24px;
+            height: 24px;
+            margin-left: 0.8rem;
+            color: #666;
+        }
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+        }
+        .sub-section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #555;
+            margin: 1.5rem 0 1rem 0;
+        }
+        .info-label {
+            font-weight: 600;
+            color: #555;
+            min-width: 120px;
+        }
+        .info-value {
+            color: #333;
+        }
+        .specialty-tag {
+            background: #e9ecef;
+            color: #495057;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 0.2rem;
+        }
+        .user-avatar {
+            width: 100px;
+            height: 100px;
+            background: #e9ecef;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.8rem;
+            margin: 1rem 0;
+        }
+        .verified-badge {
+            font-weight: 600;
+        }
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        .input-group-text {
+            background: white;
+            border: 1px solid #ced4da;
+            color: #6c757d;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .input-riyal-icon {
+            width: 20px;
+            height: 20px;
+        }
+        .bid-success {
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .left-column, .right-column {
+                width: 100%;
+                float: none;
+            }
+            
+            /* Reorder elements on mobile */
+            .project-container .clearfix {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .right-column {
+                order: 1; /* Project Title and Details first */
+            }
+            
+            .left-column {
+                order: 2; /* Bidding form and other cards second */
+                display: flex;
+                flex-direction: column;
+            }
+            
+            /* Reorder cards within left column on mobile */
+            .left-column .price-card {
+                order: 1; /* Bidding form first within left column */
+            }
+            
+            .left-column .card:nth-child(2) {
+                order: 2; /* Project Requirements second */
+            }
+            
+            .left-column .card:nth-child(3) {
+                order: 3; /* User Profile third */
+            }
+        }
+
+         .FormDisplay {
+            display: none;
+        }

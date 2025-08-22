@@ -1,0 +1,74 @@
+
+
+         /* Dashboard Styles */
+
+.main-content-iframe {
+    width: 100%;
+    height: calc(100vh - 56px);
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 0;
+    margin-right: 0;
+    overflow-x: hidden;
+}
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 200px);
+    color: #6c757d;
+}
+
+.sidebar {
+    height: calc(100vh - 56px);
+    top: 56px;
+    overflow-y: auto;
+}
+
+.sidebar-btn {
+    width: 100%;
+    text-align: left;
+    border: none;
+    border-radius: 0.375rem;
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 0.25rem;
+    background-color: transparent;
+    color: #6c757d;
+    transition: all 0.15s ease-in-out;
+}
+
+.sidebar-btn:hover {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+.sidebar-btn.active {
+    background-color: #ffc107 !important;
+    color: #000000 !important;
+}
+
+.sidebar-btn:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    outline: none;
+}
+
+.mobile-nav-btn {
+    width: 100%;
+    text-align: left;
+    border: none;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.75);
+    padding: 0.5rem 1rem;
+    transition: color 0.15s ease-in-out;
+}
+
+.mobile-nav-btn:hover {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.FormDisplay {
+            display: none;
+        }
